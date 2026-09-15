@@ -4,7 +4,6 @@ class Solution:
         n=len(grid[0])
         self.count=0
         visited=set()
-        visited2=set()
         ans=float('-inf')
         def f(i,j):
             if i<0 or i>=m or j<0 or j>=n:
@@ -18,14 +17,12 @@ class Solution:
             left=f(i,j-1)
             right=f(i,j+1)
         for i in range(m):
-            
             for j in range(n):
-                if grid[i][j]==1 and (i,j) not in visited2:
+                if grid[i][j]==1 :
                     self.count=0
                     f(i,j)
                     print(self.count)
                     ans=max(ans,self.count)
-                    visited.add((i,j))
         if ans>0:
             return ans
         else:
