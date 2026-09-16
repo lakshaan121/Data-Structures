@@ -3,16 +3,18 @@ class Solution:
         count=0
         dict1={0:1}
         ans=0
+        prefix=[0]*len(nums)
+        rem=[0]*len(nums)
         sum1=0
         for i in range(len(nums)):
             nums[i]+=sum1
-            remainder=nums[i]%k
-            if remainder  in dict1:
-                ans+=dict1[remainder]
-                dict1[remainder]+=1
-            else:
-                dict1[remainder]=1               
+            rem[i]=nums[i]%k
+            prefix[i]=nums[i]
             sum1=nums[i]
-        return ans
-
-        
+        for r in rem:
+            if r not in dict1:
+                dict1[r]=1
+            else:
+                ans+=dict1[r]
+                dict1[r]+=1
+        return ans        
