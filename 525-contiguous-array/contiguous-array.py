@@ -10,13 +10,13 @@ class Solution:
             if nums[i]==0:
                 nums[i]=-1
             nums[i]+=sum1
-            prefix[i]=nums[i]
-            sum1=nums[i]
-        for i in range(len(prefix)):
             if nums[i] not in dict1:
                 dict1[nums[i]]=i
             else:
                 max_len=max(max_len,i-dict1[nums[i]])
+            prefix[i]=nums[i]
+            sum1=nums[i]
+            
         if max_len==float('-inf'):
             return 0
         return max_len
