@@ -4,10 +4,8 @@ class Solution:
         for a,b in edges:
             graph[a].append(b)
             graph[b].append(a)
-        print(graph)
         queue=[source]
         visited=set()
-        visited.add(source)
         while len(queue)!=0:
             node=queue.pop(0)
             if node==destination:
