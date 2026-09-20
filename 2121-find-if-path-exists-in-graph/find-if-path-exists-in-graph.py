@@ -4,14 +4,16 @@ class Solution:
         for a,b in edges:
             graph[a].append(b)
             graph[b].append(a)
-        queue=[source]
         visited=set()
-        while len(queue)!=0:
-            node=queue.pop(0)
+        def f(node):
+            if node in visited:
+                return False
             if node==destination:
                 return True
+            visited.add(node)
             for neighbour in graph[node]:
                 if neighbour not in visited:
-                    visited.add(neighbour)
-                    queue.append(neighbour)
-        return False
+                    if f(neighbour):
+                        return True
+            return False
+        return f(source)
